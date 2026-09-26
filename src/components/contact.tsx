@@ -1,4 +1,46 @@
 import { ArrowUpRight, Linkedin, Mail, MapPin } from 'lucide-react';
 import { person, contactEmailHref } from '@/data/portfolio';
 import { SectionHeading } from './ui';
-export function Contact() { return <section id="contacto" className="section contact-section"><div className="container contact-grid"><div><SectionHeading number="06" eyebrow="CONTACTO" title="Hablemos de tu próximo proyecto." description="Si buscas experiencia técnica para tu equipo o tienes un proyecto en mente, puedes escribirme." /><a className="button button-primary" href={contactEmailHref}>Enviarme un correo <ArrowUpRight size={17} /></a></div><div className="contact-details"><a href={`mailto:${person.email}`}><Mail size={21} /><span><small>CORREO ELECTRÓNICO</small>{person.email}</span><ArrowUpRight size={18} /></a><a href={person.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={21} /><span><small>LINKEDIN</small>Conectemos en LinkedIn</span><ArrowUpRight size={18} /></a><div><MapPin size={21} /><span><small>UBICACIÓN</small>{person.location}</span></div></div></div></section>; }
+export function Contact() {
+  return (
+    <section id="contacto" className="section contact-section">
+      <div className="container contact-grid">
+        <div>
+          <SectionHeading
+            number="06"
+            eyebrow="CONTACTO"
+            title="Hablemos de tu próximo proyecto."
+            description="Si buscas experiencia técnica para tu equipo o tienes un proyecto en mente, puedes escribirme."
+          />
+          <a className="button button-primary" href={contactEmailHref}>
+            Enviarme un correo <ArrowUpRight size={17} />
+          </a>
+        </div>
+        <div className="contact-details">
+          <a href={`mailto:${person.email}`}>
+            <Mail size={21} />
+            <span>
+              <small>CORREO ELECTRÓNICO</small>
+              {person.email}
+            </span>
+            <ArrowUpRight size={18} />
+          </a>
+          <a href={person.linkedin} target="_blank" rel="noopener noreferrer">
+            <Linkedin size={21} />
+            <span>
+              <small>LINKEDIN</small>Conectemos en LinkedIn
+            </span>
+            <ArrowUpRight size={18} />
+          </a>
+          <div>
+            <MapPin size={21} />
+            <span>
+              <small>UBICACIÓN</small>
+              {person.location}
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

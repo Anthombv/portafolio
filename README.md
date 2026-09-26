@@ -76,3 +76,7 @@ La revisión de tamaños móviles y escritorio se realizó sobre las reglas CSS;
 - Revisión estática de CSS: breakpoints para escritorio, tablet y móvil, foco visible y reducción de movimiento. La revisión visual e interacción en navegador quedan pendientes.
 
 El botón «Enviarme un correo» utiliza `mailto:` dirigido a `anthonybarcia957@gmail.com`, con asunto predefinido. Abre el cliente de correo configurado en el dispositivo; no envía mensajes automáticamente.
+
+## Formato del código
+
+El proyecto utiliza Prettier con indentación de dos espacios. Ejecuta `npm run format` para formatear los archivos y `npm run format:check` para comprobarlos sin modificarlos. La configuración está en `.prettierrc.json`; `.prettierignore` excluye dependencias, builds y archivos generados.

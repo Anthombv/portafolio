@@ -1,3 +1,54 @@
 import { Code2, Layers3, Workflow, Sparkles, ArrowUpRight } from 'lucide-react';
 import { Feature, SectionHeading } from './ui';
-export function About() { return <section id="sobre-mi" className="section"><div className="container"><SectionHeading number="01" eyebrow="SOBRE MÍ" title="Una visión completa del desarrollo." /><div className="about-grid"><div className="about-copy"><p className="lead">Me gusta entender el problema antes de escribir la primera línea de código.</p><p>Soy Marcelo Anthony Barcia Velasco, desarrollador Full Stack en Quito. Trabajo en aplicaciones web, servicios backend y desarrollo móvil, desde la interfaz hasta la infraestructura que los sostiene.</p><p>Mi experiencia incluye aplicaciones empresariales y financieras, firma electrónica, pagos y trazabilidad. Trabajo con JavaScript, TypeScript, Java con Spring Boot y C# con .NET; también con React Native y .NET MAUI.</p><p>Aplico arquitectura limpia y hexagonal, MVVM y microservicios según las necesidades del proyecto. Uso herramientas de IA para apoyar el desarrollo, la documentación y las pruebas, revisando técnicamente los resultados.</p><a className="text-link" href="#experiencia">Mi recorrido profesional <ArrowUpRight size={16} /></a></div><div className="about-features"><Feature icon={<Code2 size={20} />} title="Más de 5 años construyendo">Experiencia en frontend, backend y aplicaciones móviles.</Feature><Feature icon={<Layers3 size={20} />} title="Software con bases sólidas">Arquitecturas para aplicaciones empresariales y financieras.</Feature><Feature icon={<Workflow size={20} />} title="Sistemas que se conectan">Integraciones, automatización e infraestructura en AWS y Kubernetes.</Feature><Feature icon={<Sparkles size={20} />} title="IA aplicada con criterio">OCR inteligente y desarrollo asistido, con revisión técnica.</Feature></div></div></div></section>; }
+export function About() {
+  return (
+    <section id="sobre-mi" className="section">
+      <div className="container">
+        <SectionHeading
+          number="01"
+          eyebrow="SOBRE MÍ"
+          title="Una visión completa del desarrollo."
+        />
+        <div className="about-grid">
+          <div className="about-copy">
+            <p className="lead">
+              Me gusta entender el problema antes de escribir la primera línea de código.
+            </p>
+            <p>
+              Soy Marcelo Anthony Barcia Velasco, desarrollador Full Stack en Quito. Trabajo en
+              aplicaciones web, servicios backend y desarrollo móvil, desde la interfaz hasta la
+              infraestructura que los sostiene.
+            </p>
+            <p>
+              Mi experiencia incluye aplicaciones empresariales y financieras, firma electrónica,
+              pagos y trazabilidad. Trabajo con JavaScript, TypeScript, Java con Spring Boot y C#
+              con .NET; también con React Native y .NET MAUI.
+            </p>
+            <p>
+              Aplico arquitectura limpia y hexagonal, MVVM y microservicios según las necesidades
+              del proyecto. Uso herramientas de IA para apoyar el desarrollo, la documentación y las
+              pruebas, revisando técnicamente los resultados.
+            </p>
+            <a className="text-link" href="#experiencia">
+              Mi recorrido profesional <ArrowUpRight size={16} />
+            </a>
+          </div>
+          <div className="about-features">
+            <Feature icon={<Code2 size={20} />} title="Más de 5 años construyendo">
+              Experiencia en frontend, backend y aplicaciones móviles.
+            </Feature>
+            <Feature icon={<Layers3 size={20} />} title="Software con bases sólidas">
+              Arquitecturas para aplicaciones empresariales y financieras.
+            </Feature>
+            <Feature icon={<Workflow size={20} />} title="Sistemas que se conectan">
+              Integraciones, automatización e infraestructura en AWS y Kubernetes.
+            </Feature>
+            <Feature icon={<Sparkles size={20} />} title="IA aplicada con criterio">
+              OCR inteligente y desarrollo asistido, con revisión técnica.
+            </Feature>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
