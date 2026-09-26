@@ -27,7 +27,7 @@ export function Experience() {
                 <span className="job-index">0{experiences.length - index}</span>
               </div>
               <div className="experience-body">
-                <ul>
+                <ul className="experience-responsibilities">
                   {job.responsibilities.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
