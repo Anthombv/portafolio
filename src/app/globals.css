@@ -209,12 +209,15 @@ a.button-small:hover {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.06fr 1fr;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr);
   align-items: center;
   min-height: 610px;
   gap: 44px;
   padding-top: 38px;
   padding-bottom: 55px;
+}
+.hero-grid > * {
+  min-width: 0;
 }
 .eyebrow {
   font-size: 10px;
@@ -236,6 +239,14 @@ a.button-small:hover {
   gap: 7px;
   margin-bottom: 25px;
   color: var(--muted);
+}
+.hero-location > span:not(.location-line) {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
 }
 .location-line {
   height: 1px;
@@ -262,6 +273,8 @@ h1 em {
   color: var(--blue);
 }
 .hero-description {
+  width: 100%;
+  overflow-wrap: break-word;
   max-width: 450px;
   margin-top: 24px;
   font-size: 15px;
@@ -410,12 +423,21 @@ h1 em {
     10px/2.35 var(--font-mono),
     monospace;
   color: #40566b;
-  white-space: pre;
+  white-space: normal;
+}
+.code-line {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 10px;
+}
+.code-text {
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .line-number {
   display: inline-block;
   width: 28px;
-  margin-right: 10px;
   text-align: center;
   color: #a0afbd;
   font-size: 9px;
@@ -1242,7 +1264,7 @@ h3 {
 }
 @media (max-width: 800px) {
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     padding-top: 52px;
     padding-bottom: 10px;
     gap: 15px;
@@ -1367,20 +1389,21 @@ h3 {
     padding-top: 40px;
   }
   .hero-location {
-    font-size: 7px;
-    letter-spacing: 0.7px;
-    gap: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    gap: 8px;
     margin-bottom: 23px;
   }
-  .location-line {
-    width: 13px;
-    margin: 0 2px;
+  .hero-location .location-line {
+    display: none;
   }
   h1 {
     font-size: 15px;
   }
   h1 > span {
-    font-size: clamp(40px, 11vw, 56px);
+    font-size: clamp(32px, 10vw, 56px);
     letter-spacing: -1.8px;
     margin-top: 12px;
   }
@@ -1390,6 +1413,7 @@ h3 {
     line-height: 1.95;
   }
   .hero-actions {
+    flex-wrap: wrap;
     gap: 9px;
     margin-top: 25px;
   }
@@ -1401,86 +1425,95 @@ h3 {
     margin-top: 22px;
   }
   .software-art {
-    height: 350px;
-    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    padding: 12px 0 20px;
   }
   .code-window {
-    top: 74px;
-    left: 3%;
-    width: 94%;
-    max-width: 94%;
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    top: auto;
+    left: auto;
+    width: 100%;
+    max-width: none;
+    transform: none;
   }
   .code-content {
-    font-size: 8px;
-    padding: 17px 7px;
-    line-height: 2.5;
+    font-size: 10px;
+    padding: 18px 10px;
+    line-height: 2;
+  }
+  .code-line {
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 8px;
   }
   .code-comment {
-    font-size: 6.5px;
+    font-size: 9px;
   }
   .line-number {
-    width: 19px;
-    margin-right: 5px;
-    font-size: 7px;
+    width: auto;
+    margin-right: 0;
+    font-size: 8px;
   }
   .window-bar {
     padding: 11px 14px;
   }
   .orbit-one {
-    width: 300px;
+    width: min(300px, 100%);
     height: 300px;
     top: 18px;
-    left: calc(50% - 150px);
+    left: 50%;
+    transform: translateX(-50%);
   }
   .orbit-two {
-    width: 230px;
+    width: min(230px, 80%);
     height: 230px;
     top: 53px;
-    left: calc(50% - 115px);
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .frontend {
-    top: 31px;
-    right: 0;
-    padding: 9px 12px;
+  .floating-card {
+    position: static;
+    min-width: 0;
+    padding: 10px;
     gap: 8px;
+    transform: none;
+  }
+  .frontend,
+  .backend {
+    grid-row: 3;
   }
   .floating-card strong {
-    font-size: 9px;
+    font-size: 11px;
   }
   .floating-card span {
-    font-size: 7px;
+    font-size: 10px;
+    line-height: 1.5;
   }
   .art-icon {
     width: 27px;
     height: 27px;
-  }
-  .backend {
-    bottom: 17px;
-    left: 0;
-    padding: 9px 12px;
-    gap: 8px;
+    flex-shrink: 0;
   }
   .mobile {
-    bottom: 22px;
-    right: 0;
-    padding: 9px;
-    gap: 6px;
-  }
-  .mobile svg {
-    width: 13px;
+    grid-column: 1 / -1;
+    grid-row: 4;
+    justify-content: center;
   }
   .art-label {
-    top: 5px;
-    left: 30px;
-    font-size: 7px;
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-content: center;
+    font-size: 10px;
   }
-  .dot-one {
-    left: 30px;
-    top: 49px;
-  }
-  .dot-two {
-    bottom: 11px;
-    right: 100px;
+  .art-dot {
+    display: none;
   }
   .hero-bottom {
     padding: 22px 0;

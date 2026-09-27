@@ -12,8 +12,26 @@ import {
   Server,
   Smartphone,
 } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { person } from '@/data/portfolio';
 import { CvButton } from './ui';
+
+function CodeLine({
+  number,
+  children,
+  comment = false,
+}: {
+  number: string;
+  children: ReactNode;
+  comment?: boolean;
+}) {
+  return (
+    <div className={`code-line${comment ? ' code-comment' : ''}`}>
+      <span className="line-number">{number}</span>
+      <span className="code-text">{children}</span>
+    </div>
+  );
+}
 
 function SoftwareComposition() {
   return (
@@ -36,42 +54,42 @@ function SoftwareComposition() {
           <Code2 size={15} />
         </div>
         <div className="code-content">
-          <div>
-            <span className="line-number">01</span>
+          <CodeLine number="01">
             <span className="code-purple">const</span> developer = {'{'}
-          </div>
-          <div>
-            <span className="line-number">02</span> <span className="code-key">name</span>:{' '}
+          </CodeLine>
+          <CodeLine number="02">
+            {'  '}
+            <span className="code-key">name</span>:{' '}
             <span className="code-green">&apos;Anthony Barcia&apos;</span>,
-          </div>
-          <div>
-            <span className="line-number">03</span> <span className="code-key">role</span>:{' '}
+          </CodeLine>
+          <CodeLine number="03">
+            {'  '}
+            <span className="code-key">role</span>:{' '}
             <span className="code-green">&apos;Full Stack&apos;</span>,
-          </div>
-          <div>
-            <span className="line-number">04</span> <span className="code-key">focus</span>: [
-          </div>
-          <div>
-            <span className="line-number">05</span>{' '}
+          </CodeLine>
+          <CodeLine number="04">
+            {'  '}
+            <span className="code-key">focus</span>: [
+          </CodeLine>
+          <CodeLine number="05">
+            {'    '}
             <span className="code-green">
               &apos;web&apos;, &apos;backend&apos;, &apos;mobile&apos;
             </span>
-          </div>
-          <div>
-            <span className="line-number">06</span> ],
-          </div>
-          <div>
-            <span className="line-number">07</span> <span className="code-key">mindset</span>:{' '}
+          </CodeLine>
+          <CodeLine number="06">
+            {'  '}
+            {']'},
+          </CodeLine>
+          <CodeLine number="07">
+            {'  '}
+            <span className="code-key">mindset</span>:{' '}
             <span className="code-green">&apos;always learning&apos;</span>
-          </div>
-          <div>
-            <span className="line-number">08</span>
-            {'}'};
-          </div>
-          <div className="code-comment">
-            <span className="line-number">09</span>
+          </CodeLine>
+          <CodeLine number="08">{'}'};</CodeLine>
+          <CodeLine number="09" comment>
             {'// Ideas que se convierten en software.'}
-          </div>
+          </CodeLine>
         </div>
         <div className="window-footer">
           <span>
@@ -116,8 +134,11 @@ export function Hero({ cvAvailable }: { cvAvailable: boolean }) {
       <div className="container hero-grid">
         <div className="hero-copy">
           <p className="eyebrow hero-location">
-            <MapPin size={14} /> {person.location}
-            <span className="location-line" /> DESARROLLO CON PROPÓSITO
+            <span className="hero-place">
+              <MapPin size={14} /> {person.location}
+            </span>
+            <span className="location-line" aria-hidden="true" />
+            <span className="hero-purpose">DESARROLLO CON PROPÓSITO</span>
           </p>
           <h1>
             Anthony Barcia
